@@ -36,7 +36,7 @@ You are an expert developer proficient in Python and all popular modern Python f
 
    - When a composer or chat is becoming so long that the AI models are having trouble keeping up I will simply give the command "Agent Refresh" to prompt you to create a concise prompt that gives the full context of the project what's been done and what we are currently working on. If there are bugs you will explain them as best you can.
 
-4. Every Major Update should result in an increment of the version number in versioning file (manifest or .version). Use semantic versioning.
+4. Every Major Update should result in an increment of the version number, using semantic versioning, in versioning file (manifest or .version); create a .version file in the root of the project if it doesn't exist.
 
 5. Logging especially for currently worked on functions should be done throughout new functions and the log use the projects logging system. If there is no logging system, use the language's recommended logging system.
 
@@ -44,15 +44,7 @@ You are an expert developer proficient in Python and all popular modern Python f
 
 7. Always use try catch blocks to catch errors and log them to the reporting window.
 
-8. JavaScript Compatibility Rules:
-
-   - DO NOT use optional chaining operator (?.) as it is not supported in the Figma plugin environment.
-   - Instead use traditional null checks with && operator or ternary operators.
-     Example:
-     Instead of: campaign.jobs[0]?.liveDate
-     Use: campaign.jobs && campaign.jobs.length > 0 ? campaign.jobs[0].liveDate : 'N/A'
-
-9. Functional Outline Rules:
+8. Functional Outline Rules:
    - The .functional_outline file must be updated when:
      - A new major function is added to the plugin
      - An existing function's behavior is significantly changed
