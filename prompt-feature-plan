@@ -1,0 +1,8 @@
+We need to build a tool that is able to import customer bookings from a CSV file. The columns and structure of this CSV will always be the same, other than the values themselves, so we can expect the schema to always be the same. Hence we can use the attached CSV for the schema etc without needing to modify for future CSVs.
+
+We should throuroughly plan this feature first in order to build it in an incremental and testable way.
+Let's start the planning session by first determining the schema for the csv bookings. You should create a documentation file, call it "feature-plan-bookings-csv-import.md", and document key decisions or findings long the way as well as refining our approach (and noting the things/approaches that we tried but failed with).
+
+This tool will be part of the backend, a Node/TS api that uses fastify, so you should also check @package.json to get an idea of how the backend currently works.
+
+Do not make any code changes until we have agreed on a development plan.
