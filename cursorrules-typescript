@@ -1,0 +1,33 @@
+# NOTE "CURRENT FILE STRUCTURE"
+# NOTE TO USER: THIS NEEDS TO INITIALLY BE CREATED BY ME (THE USER) AND NOT YOU (CURSOR)
+# NOTE TO CURSOR: IF IT STILL USES "file.ts" or "file.js" YOU MUST INFORM THE USER TO UPDATE THE PROJECT STRUCTURE ACCURATELY
+
+This is the current file structure of the project:
+
+PROJECT_NAME
+├── Files and Folders in my Project
+│   ├── file.ts
+│   ├── file.js
+│   ├── file.js
+│   └── file.js
+├── file.js
+
+1. File Creation Rules:
+    Rules:
+    - All new files added to the project should be added to the .cursorrules file structure.
+
+2. Agent Rules:
+    - New Project Features should be added in an Agile manner, one slice at a time.
+    - When editing an existing function in a file, you must think about the other objects and functions that depend on it.
+
+3. Composer Continuity:
+    - When a composer or chat is becoming so long that the AI models are having trouble keeping up I will simply give the command "Agent Refresh" to prompt you to create a concise prompt that gives the full context of the project what's been done and what we are currently working on. If there are bugs you will explain them as best you can.
+
+4. Functional Outline Rules:
+    - The .functional_outline file must be updated when:
+      - A new major function is added to the plugin
+      - An existing function's behavior is significantly changed
+      - Note: Bug fixes and minor tweaks do not require updates, unless they include significant functionality changes
+    - When starting a new composer session, always read the .functional_outline first to understand the current state and functionality of the plugin
+    - The outline should be kept in a clear, hierarchical format with major sections numbered and subsections properly indented
+    - Until a function is verified as working and complete it should be noted in the functional outline as "In Progress".
