@@ -1,0 +1,138 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+title: "Frontend Development Guidelines"
+description: "Rules and best practices for the frontend application"
+author: "Henry Geddes"
+date: "2025-05-20"
+last_updated: "2025-05-20"
+globs: [
+  "src/frontend/**/*.ts",
+  "src/frontend/**/*.tsx",
+  "src/frontend/**/*.js",
+  "src/frontend/**/*.jsx",
+  "!src/frontend/node_modules/**",
+  "!src/frontend/dist/**",
+  "!src/frontend/build/**",
+  "!src/frontend/coverage/**"
+]
+alwaysApply: false
+---
+
+# Frontend Development Guidelines
+
+You are an expert in TypeScript, React, Vite, React Router, and modern web development, with a deep understanding of the Mt Buller booking frontend application architecture.
+
+## Tech Stack & Architecture
+
+- **Core Technologies**: React 18, TypeScript, Vite, React Router 6
+- **Styling**: Tailwind CSS with a custom theme, shadcn/ui component library
+- **State Management**: React Context API, custom hooks for data fetching and state
+- **API Integration**: Axios for API requests
+
+## Code Style and Structure
+
+- Write concise, maintainable TypeScript code following functional programming paradigms
+- Strictly avoid class components in favor of functional components with hooks
+- Use descriptive variable names with auxiliary verbs (e.g., `isLoading`, `hasError`)
+- Follow project directory organization:
+  - `/components` - Contains UI components organized by feature and common components
+  - `/api` - API services and type definitions
+  - `/contexts` - React contexts for application state
+  - `/hooks` - Custom hooks for reusable logic
+  - `/pages` - Page components used in routing
+  - `/utils` - Utility functions
+
+## Naming Conventions
+
+- Use lowercase with hyphens for directories (e.g., `components/booking-history`)
+- Use PascalCase for component files and CamelCase for utility files
+- Favor named exports over default exports for better imports and IDE support
+
+## TypeScript Usage
+
+- Use TypeScript for all code with proper type definitions
+- For component props, create interfaces with descriptive names (e.g., `BookingDetailProps`)
+- Define shared types in dedicated type files in the `/types` directory
+- Avoid using `any` type; prefer specific types or `unknown` when necessary
+- Keep type definitions close to where they're used unless they're shared
+
+## UI Components
+
+- Use shadcn/ui components as the primary UI library
+- Extend shadcn components with consistent styling using the tailwind-merge utility
+- Follow the component composition pattern for complex components
+- Use the Radix UI primitives for accessible complex components
+- Maintain brand colors and theming through the Tailwind configuration
+
+## Form Handling
+
+- Use custom form components built on shadcn/ui primitives
+- Implement form validation through the custom validation hooks
+- Use the `ShadcnFormInput` component for consistent form inputs with built-in validation
+- Follow accessibility best practices in all form implementations
+
+## State Management
+
+- Use React Context for global state (auth, forms, etc.)
+- Create custom hooks for data fetching operations that return loading/error states
+- Implement proper loading, error, and success states for all API interactions
+- Use local state (useState) for component-specific state
+
+## Routing and Navigation
+
+- Use React Router 6 for routing with the BrowserRouter provider
+- Implement protected routes using the `ProtectedRoute` component
+- Organize routes in a central location (App.tsx)
+- Use route parameters for dynamic content (e.g., `/bookings/:id`)
+
+## API Integration
+
+- Use service files in the `/api/services` directory for API calls
+- Implement proper error handling and loading states
+- Use axios interceptors for common request/response handling
+- Define API types in the `/api/types` directory
+
+## Performance Optimization
+
+- Use React.memo sparingly and only when there's a measurable performance benefit
+- Implement code splitting with React.lazy for route-based components
+- Avoid unnecessary re-renders by properly memoizing expensive computations
+- Optimize images and assets for web delivery
+
+## Testing
+
+- Write unit tests with Vitest and React Testing Library
+- Test component rendering, user interactions, and edge cases
+- Implement proper mocking for API calls
+- Focus on testing user interactions rather than implementation details
+
+## Accessibility
+
+- Follow WCAG 2.1 AA standards for all components
+- Implement proper keyboard navigation for interactive elements
+- Ensure appropriate color contrast ratios
+- Use semantic HTML elements
+- Test with screen readers periodically
+- Maintain focus management for modals and dialogs
+
+## Error Boundaries
+
+- Implement Error Boundary components to gracefully handle runtime errors
+- Place error boundaries strategically around critical UI sections
+- Provide user-friendly fallback UIs when errors occur
+
+## Environment Configuration
+
+- Use import.meta.env for accessing environment variables
+- Follow Vite's environment variable naming convention (VITE_*)
+- Create environment-specific configuration files when needed
+
+## Code Splitting
+
+- Use dynamic imports for route-based code splitting
+- Consider component-level code splitting for large features
+- Implement proper loading states for lazy-loaded components

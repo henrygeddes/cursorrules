@@ -1,0 +1,155 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+title: "Backend Development Guidelines"
+description: "Provides guidance for TypeScript development with NestJS framework, with emphasis on clean programming, modern TypeORM patterns, and domain-driven design."
+author: "Henry Geddes"
+date: "2025-05-20"
+last_updated: "2025-05-20"
+globs: [
+  "src/backend/**/*.ts",
+  "!src/backend/node_modules/**",
+  "!src/backend/dist/**",
+  "!src/backend/coverage/**"
+]
+alwaysApply: false
+---
+
+# Backend Development Guidelines
+
+## TypeScript General Guidelines
+
+### Basic Principles
+
+- Use English for all code and documentation.
+- Always declare the type of each variable and function (parameters and return value).
+- Avoid using `any`; use proper typing.
+- Create necessary interfaces and types.
+- Use JSDoc to document public classes and methods.
+- Keep functions focused and concise.
+- Prefer named exports for better import readability and refactoring.
+
+### Nomenclature
+
+- Use PascalCase for classes and interfaces.
+- Use camelCase for variables, functions, and methods.
+- Use kebab-case for file and directory names.
+- Use UPPERCASE for environment variables and constants.
+- Avoid magic numbers and define constants.
+- Start each function with a verb.
+- Use verbs for boolean variables (e.g., isLoading, hasError, canDelete).
+- Use complete words instead of abbreviations and ensure correct spelling.
+- Acceptable abbreviations include standard ones like API, URL, and common parameters like req, res, next, etc.
+
+### Functions
+
+- Write short functions with a single purpose (less than 20 lines).
+- Name functions using verb-noun pattern.
+- For boolean-returning functions, use prefix is/has/can/should.
+- Avoid deeply nested code blocks:
+  - Use early returns.
+  - Extract complex logic to utility functions.
+- Use higher-order functions (map, filter, reduce) when appropriate.
+- Use arrow functions for simple implementations, named functions for complex ones.
+- Use default parameter values to avoid unnecessary null checks.
+- Prefer the RO-RO (Receive Object-Return Object) pattern for complex parameters and return values.
+
+### Data
+
+- Encapsulate data in appropriate type structures.
+- Use DTOs with class-validator for input validation.
+- Prefer immutability for data structures.
+- Use readonly for properties that shouldn't change.
+- Use as const for literal values that shouldn't change.
+
+### Classes
+
+- Follow SOLID principles.
+- Prefer composition over inheritance, but use inheritance for shared service functionality.
+- Use interfaces to define contracts.
+- Write focused classes with clear responsibilities.
+- Consider specialized service classes over monolithic services.
+
+### Error Handling
+
+- Use exceptions for unexpected errors.
+- When catching exceptions:
+  - Handle expected problems.
+  - Add context to the error.
+  - Use global exception filters for common error patterns.
+
+## NestJS Implementation
+
+### Architecture
+
+- **Modular Structure**: Organize code by domain with modules for each major feature (bookings, users, payments, etc.).
+- **TypeORM Integration**: Use TypeORM for database operations with proper entity definitions.
+- **Controllers**: 
+  - Organize controllers by functionality within domains.
+  - Consider multiple specialized controllers (e.g., creation, query, management) for complex domains.
+- **Services**:
+  - Create specialized services with single responsibilities.
+  - Use base services for shared functionality and extend them for specific use cases.
+  - Consider using service composition instead of large services.
+- **Data Transfer Objects (DTOs)**:
+  - Create specific DTOs for input validation using class-validator.
+  - Create separate DTOs for different operations (create, update, query).
+  - Use class-transformer for serialization/deserialization.
+- **Entities**:
+  - Define TypeORM entities for database models.
+  - Use appropriate TypeORM decorators for relationships and constraints.
+
+### Module Organization
+
+- **Feature Modules**: Primary domain functionality.
+  - Entity definitions in entities/ directory.
+  - Controllers in controllers/ directory.
+  - Services in services/ directory.
+  - DTOs in dto/ directory.
+- **Core Module**: Application-wide functionality.
+  - Global exception filters.
+  - Authentication guards.
+  - Request interceptors.
+- **Shared Module**: Common utilities and services used across multiple modules.
+
+### Best Practices
+
+- Follow RESTful API conventions for endpoints.
+- Use dependency injection for all services.
+- Implement proper input validation using class-validator.
+- Implement proper error handling with appropriate HTTP status codes.
+- Use TypeORM repositories for database operations.
+- Document public APIs using Swagger/OpenAPI decorators if applicable.
+
+### Testing
+
+- Use Jest for unit testing.
+- Integration and E2E testing is handled by the frontend (using Cypress).
+- Create meaningful test cases for controllers and services.
+- Use proper mocking for dependencies in unit tests.
+- Test coverage should focus on business logic and critical paths.
+- Consider testing controllers with supertest for HTTP endpoints.
+
+### API Versioning
+
+- Implement proper API versioning strategy (e.g., via URL path /v1/)
+- Maintain backward compatibility when evolving APIs
+- Document breaking changes clearly
+
+### Logging and Monitoring
+
+- Implement structured logging with appropriate levels
+- Include request IDs in logs for traceability
+- Use NestJS interceptors for request/response logging
+- Configure error monitoring for production environments
+
+### Security Best Practices
+
+- Implement rate limiting for authentication endpoints
+- Use Content-Security-Policy headers
+- Validate all user inputs, not just through DTOs
+- Implement proper CORS configuration
+- Follow OWASP security guidelines
