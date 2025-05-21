@@ -1,4 +1,4 @@
-## RULES FOR THEE BUT ALSO FOR ME
+## CURSOR RULES FOR ME BUT ALSO FOR THEE
 
 _This is my personal collection of generic (Cursor Rules)[https://docs.cursor.com/context/rules] that I've used for various projects_
 
